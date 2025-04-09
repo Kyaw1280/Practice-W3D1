@@ -11,14 +11,28 @@ class Fruit {
     } 
 
         static showAll() {
-            return fruit.map
+            return fruits.map(q => new Fruit(q))
+        }
+
+        static show(name) {
+            const fruit = fruits.find((fruit) => fruit.name.toLowerCase() == name)
+
+            if (fruit) {
+                return new Fruit(fruit)
+            } else {
+                throw 'The fruit does not exist.' 
+            }
+        }
+
+        static create(data) {
+            const newFruit = data
+            console.log(newFruit)
+
+            newFruit['id'] = fruits.length + 1
+            fruits.push(newFruit)
+
+            return new Fruit(newFruit)
         }
 }
-
-const fruit = fruits.find((fruit) => fruit.name.toLowerCase() == name)
    
-if (fruit === undefined) {
-    res.status(404).send('The fruit does not exist.')
-} else {
-    res.status(200).send(fruit)
-}
+module.exports = Fruit

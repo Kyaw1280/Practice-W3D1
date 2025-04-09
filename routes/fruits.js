@@ -4,5 +4,6 @@ const fruits = require('../controllers/fruits')
 
 router.get('/', fruits.index)
 router.get('/:name', fruits.show)
+router.post('/', fruits.create)
 
 module.exports = router 
